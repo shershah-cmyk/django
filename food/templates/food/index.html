@@ -1,0 +1,9 @@
+    {% extends "food/base.html" %}
+    {% block title %}index{% endblock title %}
+    {% block content %}
+    {% for item in items %}
+        <a class="no-underline text-white-500" href="{% url 'food:detail' item.id %}">
+            <p>{{ item.id }} -- {{ item.item_name }}</p>
+        </a>
+    {% endfor %}
+    {% endblock content %}
