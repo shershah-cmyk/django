@@ -25,15 +25,36 @@
         <nav class="navbar navbar-dark bg-dark">
             <a href="#" class="navbar-brand">FoodApp</a>
             <div class="navbar mx-2">
-                <a class="nav-item nav-link text-white mx-2" href="{% url 'food:create_item' %}">
-                    Add Item
-                </a>
-                <a class="nav-item nav-link text-white mx-2" href="#">
-                    Delete Item
-                </a>
-                <a class="nav-item nav-link text-white mx-2" href="#">
-                    View Item
-                </a>
+                <li>
+                    <a class="nav-item nav-link text-white mx-2" href="{% url 'food:create_item' %}">
+                        Add Item
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="nav-item nav-link text-white mx-2" href="#">
+                        Delete Item
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="nav-item nav-link text-white mx-2" href="#">
+                        View Item
+                    </a>
+                </li>
+                
+                <li>
+                    {% if request.user.is_authenticated %}
+                    <form method="post" action="{% url 'users:logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Logout</button>
+                    </form>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'users:login' %}">Login</a>
+                    </li>
+                    {% endif %}
+                </li>
             </div>
         </nav>
         {% if messages %}

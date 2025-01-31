@@ -120,7 +120,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 # STATIC_ROOT = BASE_DIR / 'staticfiles'
 LOGIN_REDIRECT_URL ='food:index'
-
+LOGOUT_REDIRECT_URL='users:login'
+LOGIN_URL = 'users:login'
+MEDIA_URL='/media/'
+MEDIA_ROOT=BASE_DIR/'media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
