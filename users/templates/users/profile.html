@@ -1,3 +1,19 @@
-<h1>{{data.user}}</h1>
-<img src="{{data.user.image}}" alt="image">
-<h6>{{data.location}}</h6>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+</head>
+<body>
+    <h1>{{ user.username }}</h1>
+    <img src="{{ user.profile.image.url }}" alt="Profile Image">
+    <h6>{{ user.profile.location }}</h6>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="image">Upload Profile Image:</label>
+        <input type="file" name="image" id="image">
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
