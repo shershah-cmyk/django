@@ -14,6 +14,7 @@ def index(request):
     
 def detail(request,item_id):
     item=ItemModel.objects.get(pk=item_id)
+    print("==>",item)
     context={
         'item':item
     }
@@ -36,7 +37,13 @@ def update_item(request,id):
         return redirect('food:index')
     return render(request,'food/item-form.html',{"form":form,"item":item})
     
+def delete_item(request,id):
+    item = ItemModel.objects.get(id=id)
+    if request.method =='POST':
+        item.delete()
+        return redirect('food:index')
     
+    return render(request,'food/item-delete.html',{'item':item})
     
     
 
